@@ -1,3 +1,6 @@
+-- prevent creation of a bunch of tables
+drop table if exists "gallery";
+-- create the table "gallery"
 CREATE TABLE "gallery" (
   "id" SERIAL PRIMARY KEY,
   "url" VARCHAR,
@@ -5,7 +8,7 @@ CREATE TABLE "gallery" (
   "description" TEXT,
   "likes" INTEGER DEFAULT 0
 );
-
+-- insert information into "gallery" table
 INSERT INTO "gallery" 
 ("url", "title", "description")
 VALUES
