@@ -19,6 +19,7 @@ const GalleryItem = ({ galleryItem }) => {
   const handleLike = () => {
     // Send a PUT request to increment likes for the item.
     axios
+      // .put localhost:5001/api/gallery/like/
       .put(`/api/gallery/like/${galleryItem.id}`)
       .then((response) => {
         // If the request is successful, increment the likes count in the state.

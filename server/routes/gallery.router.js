@@ -1,72 +1,59 @@
+// Import the Express module and create a router
 const express = require("express");
 const router = express.Router();
+
+// Import the pool module for database connection
 const pool = require("../modules/pool.js");
 
+/**
+ * GET Route: Fetch a single gallery item by its ID
+ * !Path: /api/gallery/:id
+ * Description: Retrieves the gallery item that matches the provided ID from the database
+ * and sends it back in the response.
+ */
+router.get("/:id", (req, res) => {
+  // Extract the gallery ID from the request parameters
+  const galleryId = req.params.id;
 
+  // SQL query to select the gallery item that matches the given ID
+  const queryText = `SELECT * FROM "gallery" WHERE "id" = $1;`;
 
-// // !GET /gallery/:id
-// // TODO [] Implement the GET /api/gallery/:id route so that it will send back the gallery item object with the matching id as its response.
-
-// router.get("/:id", (req, res) => {
-//   const galleryId = req.params.id;
-//   const queryText = `SELECT * FROM "gallery" WHERE "id" = $1;`;
-//   pool
-//     .query(queryText, [galleryId])
-//     .then((result) => {
-//       res.send(result.rows[0]);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//       res.sendStatus(500);
-//     });
-// });
-
-// !GET /gallery
-// TODO [x] Implement the GET /api/gallery route so that it will send back the array of gallery item objects as its response.
-
-router.get("/", (req, res) => {
-  const queryText = 'SELECT * FROM "gallery" ORDER BY "id";';
+  // Execute the query and handle the result or error
   pool
-    .query(queryText)
+    .query(queryText, [galleryId])
     .then((result) => {
-      res.send(result.rows);
+      // Send the first row (the matched gallery item) as the response
+      res.send(result.rows[0]);
     })
     .catch((error) => {
+      // Log the error and send a 500 Internal Server Error status
       console.log(error);
       res.sendStatus(500);
     });
 });
 
-// // !POST ROUTE
-// // TODO [] Implement the POST /api/gallery route so that it will insert a new gallery item into the database.
+/**
+ * GET Route: Fetch all gallery items
+ * !Path: /api/gallery
+ * Description: Retrieves all gallery items from the database and sends them back in an array.
+ */
+router.get("/", (req, res) => {
+  // SQL query to select all gallery items, ordered by their ID
+  const queryText = 'SELECT * FROM "gallery" ORDER BY "id";';
 
-// router.post("/", (req, res) => {
-//   const { path, description } = req.body;
-//   const queryText = `INSERT INTO "gallery" ("path", "description") VALUES ($1, $2);`;
-//   pool
-//     .query(queryText, [path, description])
-//     .then((result) => {
-//       res.sendStatus(201);
-//     })
-//     .catch((error) => {
-//       console.log(`Error adding new item`, error);
-//       res.sendStatus(500);
-//     });
-// });
-
-
-// PUT ROUTE
-// TODO [x] Implement the PUT /api/gallery/like/:id route
-// TODO - so that it will increment a given gallery item's likes value by 1 and send back HTTP status code 200 as its response.
-router.put("/like/:id", (req, res) => {
-  console.log(req.params);
-  const galleryId = req.params.id;
-  const queryText = `UPDATE "gallery" SET "likes" = "likes" + 1 WHERE "id" = $1;`;
-  // SQL query updating "gallery" table setting the "likes" column to itterate by one based on the id value
-  pool.query(queryText, [galleryId]).then((result) => {
-    res.sendStatus(200);
-  });
+  // Execute the query and handle the result or error
+  pool
+    .query(queryText)
+    .then((result) => {
+      // Send the array of gallery items as the response
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      // Log the error and send a 500 Internal Server Error status
+      console.log(error);
+      res.sendStatus(500);
+    });
 });
 
-
+// Export the router for use in other modules
 module.exports = router;
