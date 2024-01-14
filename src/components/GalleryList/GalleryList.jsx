@@ -5,7 +5,10 @@
 
 import React, { useState, useEffect } from "react";
 import GalleryItem from "../GalleryItem/GalleryItem";
+// import axios from "axios";
+// import "./GalleryList.css";
 
+// GalleryList component
 const GalleryList = () => {
   const [galleryItems, setGalleryItems] = useState([]);
 

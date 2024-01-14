@@ -7,11 +7,15 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+// import axios from "axios";
+// import "./GalleryItem.css";
+
+// GalleryItem component
 
 const GalleryItem = ({ galleryItem }) => {
+  // GalleryItem takes in galleryItem prop
   const [isExpanded, setIsExpanded] = useState(false);
   const [likes, setLikes] = useState(galleryItem.likes);
-
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
   };

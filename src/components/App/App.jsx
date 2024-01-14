@@ -1,52 +1,45 @@
+// basic page layout imports at the top, then function, then const, Return and export at the bottom
+import React from "react";
+import { useState, useEffect } from "react";
+// import GalleryList from "../GalleryList/GalleryList.jsx";
+// import GalleryItem from "../GalleryItem/GalleryItem.jsx";
+import axios from "axios";
+import "./App.css";
+
+// App.jsx
 function App() {
+  const [galleryList, setGalleryList] = useState([]);
+  const [toggleFetch, setToggleFetch] = useState(false);
+  
+  // useEffect on page load
+  useEffect(() => {
+    console.log("in useEffect");
+    fetchGallery();
+  }, []);
+  // fetchGallery function
+  const fetchGallery = () => {
+    axios
+      .get("/gallery")
+      .then((response) => {
+        console.log("response from server", response.data);
+        setGalleryList(response.data);
+      })
+      .catch((error) => {
+        console.log("error getting gallery", error);
+      });
+  };
+  // return
   return (
     <div>
       <header>
         <h1>React Gallery</h1>
       </header>
       <p>A gallery of cute baby animals</p>
-      {/* images */}
-      <img
-        src="images/small cartoon beaver.png"
-        alt="small cartoon beaver"
-        style={{ width: "100px", height: "100px" }}
-      />
-      <img
-        src="images/small cartoon dog.png"
-        alt="small cartoon dog"
-        style={{ width: "100px", height: "100px" }}
-      />
-      <img
-        src="images/small cartoon goat.png"
-        alt="small cartoon goat"
-        style={{ width: "100px", height: "100px" }}
-      />
-      <img
-        src="images/small cartoon moose.png"
-        alt="small cartoon moose"
-        style={{ width: "100px", height: "100px" }}
-      />
-      <img
-        src="images/small cartoon mouse.png"
-        alt="small cartoon mouse"
-        style={{ width: "100px", height: "100px" }}
-      />
-      "
-      <img
-        src="images/small cartoon beaver monster thing.png"
-        alt="small cartoon beaver monster thing"
-        style={{ width: "100px", height: "100px" }}
-      />
-      <img
-        src="images/small cartoon scorpion.png"
-        alt="small cartoon scorpion"
-        style={{ width: "100px", height: "100px" }}
-      />
-      <img
-        src="images/small cartoon snake.png"
-        alt="small cartoon snake"
-        style={{ width: "100px", height: "100px" }}
-      />
+      {/* <GalleryList component/> */}
+      {/* <GalleryList galleryList={galleryList} /> */}
+      {/* <GalleryItem component/> */}
+      {/* <GalleryItem /> */}
+      {/* <GalleryItem /> */}
     </div>
   );
 }
