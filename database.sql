@@ -15,36 +15,43 @@ CREATE TABLE "gallery" (
 INSERT INTO
   "gallery" ("url", "title", "description")
 VALUES
+-- 1
   (
     '/images/small cartoon beaver.png',
     'Beaver!',
     'Small cartoon photo of a beaver..'
   ),
+  -- 2
   (
     '/images/small cartoon dog.png',
     'Dog!',
     'Small cartoon photo of a dog..'
   ),
+  -- 3
   (
     '/images/small cartoon goat.png',
     'Goat!',
     'Small cartoon photo of a goat..'
   ),
+  -- 4
   (
     '/images/small cartoon moose.png',
     'Moose!',
     'Small cartoon photo of a moose..'
   ),
+  -- 5
   (
     '/images/small cartoon mouse.png',
     'Mouse!',
     'Small cartoon photo of a mouse..'
   ),
+  -- 6
   (
     '/images/small cartoon scorpion.png',
     'scorpion!',
     'Small cartoon photo of a scorpion..'
   ),
+  -- 7
   (
     '/images/small cartoon snake.png',
     'Snake!',

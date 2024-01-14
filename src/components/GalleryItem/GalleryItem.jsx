@@ -6,7 +6,8 @@
 // Contains a "like" button that, when clicked, will fire off a PUT /api/gallery/like/:id request.
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+
 // import axios from "axios";
 // import "./GalleryItem.css";
 
@@ -21,9 +22,9 @@ const GalleryItem = ({ galleryItem }) => {
   };
 
   const handleLike = () => {
-    fetch(`/api/gallery/like/${galleryItem.id}`, {
-      method: "PUT",
-    })
+    axios
+      .put(`/api/gallery/like/${galleryItem.id}`)
+
       .then((response) => {
         if (response.status === 200) {
           setLikes(likes + 1);

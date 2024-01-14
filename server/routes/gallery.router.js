@@ -22,7 +22,7 @@ const pool = require("../modules/pool.js");
 // });
 
 // !GET /gallery
-// TODO [] Implement the GET /api/gallery route so that it will send back the array of gallery item objects as its response.
+// TODO [x] Implement the GET /api/gallery route so that it will send back the array of gallery item objects as its response.
 
 router.get("/", (req, res) => {
   const queryText = 'SELECT * FROM "gallery" ORDER BY "id";';
@@ -56,7 +56,7 @@ router.get("/", (req, res) => {
 
 
 // PUT ROUTE
-// TODO [] Implement the PUT /api/gallery/like/:id route
+// TODO [x] Implement the PUT /api/gallery/like/:id route
 // TODO - so that it will increment a given gallery item's likes value by 1 and send back HTTP status code 200 as its response.
 router.put("/like/:id", (req, res) => {
   console.log(req.params);

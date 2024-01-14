@@ -1,45 +1,39 @@
-// basic page layout imports at the top, then function, then const, Return and export at the bottom
-import React from "react";
-import { useState, useEffect } from "react";
-// import GalleryList from "../GalleryList/GalleryList.jsx";
-// import GalleryItem from "../GalleryItem/GalleryItem.jsx";
+import React, { useState, useEffect } from "react";
+import GalleryList from "../GalleryList/GalleryList.jsx";
 import axios from "axios";
 import "./App.css";
 
-// App.jsx
+// App component
 function App() {
+  // State for storing gallery items
   const [galleryList, setGalleryList] = useState([]);
-  const [toggleFetch, setToggleFetch] = useState(false);
-  
-  // useEffect on page load
+
+  // Fetch gallery data when the component mounts
   useEffect(() => {
-    console.log("in useEffect");
     fetchGallery();
   }, []);
-  // fetchGallery function
+
+  // Function to fetch gallery data from the server
   const fetchGallery = () => {
-    axios
-      .get("/gallery")
+    axios.get("/api/gallery")
       .then((response) => {
-        console.log("response from server", response.data);
+        // Update state with the fetched data
         setGalleryList(response.data);
       })
       .catch((error) => {
-        console.log("error getting gallery", error);
+        console.error("Error fetching gallery data:", error);
       });
   };
-  // return
+
+  // Render the component
   return (
-    <div>
+    <div className="app">
       <header>
         <h1>React Gallery</h1>
       </header>
       <p>A gallery of cute baby animals</p>
-      {/* <GalleryList component/> */}
-      {/* <GalleryList galleryList={galleryList} /> */}
-      {/* <GalleryItem component/> */}
-      {/* <GalleryItem /> */}
-      {/* <GalleryItem /> */}
+      {/* GalleryList component with galleryList prop */}
+      <GalleryList galleryList={galleryList} />
     </div>
   );
 }
