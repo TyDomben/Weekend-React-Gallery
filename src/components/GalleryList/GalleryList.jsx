@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import GalleryItem from "../GalleryItem/GalleryItem";
 import axios from "axios";
 // import "./GalleryList.css";
+//
 // Define the GalleryList component
 const GalleryList = () => {
   // State to store gallery items

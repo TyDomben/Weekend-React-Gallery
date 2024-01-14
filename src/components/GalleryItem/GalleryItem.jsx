@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import "./GalleryItem.css"; 
+// import "./GalleryItem.css";
 
 // Defines a component to display a single item in the gallery.
 const GalleryItem = ({ galleryItem }) => {
@@ -12,7 +12,7 @@ const GalleryItem = ({ galleryItem }) => {
 
   // Function to toggle the expanded state, showing or hiding the description.
   const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
+    setIsExpanded(isExpanded ? false : true); //ternary operator
   };
 
   // Function to handle 'like' button click.

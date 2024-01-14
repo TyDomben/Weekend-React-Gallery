@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GalleryList from "../GalleryList/GalleryList.jsx";
 import axios from "axios";
-import "./App.css";
+// import "./App.css";
 
 // App component
 function App() {
@@ -29,9 +29,9 @@ function App() {
   return (
     <div className="app">
       <header>
-        <h1>React Gallery</h1>
+        <h1>TY's React Gallery</h1>
       </header>
-      <p>A gallery of cute baby animals</p>
+      <p>TY's gallery of cute baby animals</p>
       {/* GalleryList component with galleryList prop */}
       <GalleryList galleryList={galleryList} />
     </div>
