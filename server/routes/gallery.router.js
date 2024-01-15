@@ -1,7 +1,6 @@
 // Import the Express module and create a router
 const express = require("express");
 const router = express.Router();
-
 // Import the pool module for database connection
 const pool = require("../modules/pool.js");
 
@@ -24,6 +23,7 @@ router.get("/:id", (req, res) => {
     .then((result) => {
       // Send the first row (the matched gallery item) as the response
       res.send(result.rows[0]);
+      console.log(result.rows[0]);
     })
     .catch((error) => {
       // Log the error and send a 500 Internal Server Error status
@@ -54,6 +54,33 @@ router.get("/", (req, res) => {
       res.sendStatus(500);
     });
 });
+
+//  * PUT Route: Increment the number of likes for a gallery item
+//! * Path: /api/gallery/like/:id
+//  * Description: Increments the number of likes for the gallery item with the given ID
+ 
+
+router.put("/like/:id", (req, res) => {
+  // Extract the gallery ID from the request parameters
+  const galleryId = req.params.id;
+
+  // SQL query to increment the number of likes for the gallery item with the given ID
+  const queryText = `UPDATE "gallery" SET "likes" = "likes" + 1 WHERE "id" = $1;`;
+
+  // Execute the query and handle the result or error
+  pool
+    .query(queryText, [galleryId])
+    .then(() => {
+      // Send a `200 OK` status code if the request is successful
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      // Log the error and send a 500 Internal Server Error status
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+
 
 // Export the router for use in other modules
 module.exports = router;

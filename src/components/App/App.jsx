@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GalleryList from "../GalleryList/GalleryList.jsx";
 import axios from "axios";
-// import "./App.css";
+import "./App.css";
 
 // App component
 function App() {
@@ -15,7 +15,8 @@ function App() {
 
   // Function to fetch gallery data from the server
   const fetchGallery = () => {
-    axios.get("/api/gallery")
+    axios
+      .get("/api/gallery")
       .then((response) => {
         // Update state with the fetched data
         setGalleryList(response.data);
@@ -27,13 +28,24 @@ function App() {
 
   // Render the component
   return (
-    <div className="app">
+    // GalleryApp
+    <div className="GalleryApp" data-testid="app">
+
       <header>
-        <h1>TY's React Gallery</h1>
+        {/* header */}
+        <h1 className="header">TY's React Gallery</h1>
       </header>
-      <p>TY's gallery of cute baby animals</p>
-      {/* GalleryList component with galleryList prop */}
-      <GalleryList galleryList={galleryList} />
+      {/* main content */}
+      <div className="main-content">
+        {/* gallery description */}
+        <p className="galleryDescription">TY's gallery of cute baby animals</p>
+        {/* gallery list */}
+        <GalleryList className="gallery-list" galleryList={galleryList} />
+      </div>
+      {/* footer */}
+      <footer className="footer">
+        <p>Copyright 2024</p>
+      </footer>
     </div>
   );
 }

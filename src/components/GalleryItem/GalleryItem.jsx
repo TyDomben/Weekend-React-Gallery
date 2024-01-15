@@ -19,7 +19,6 @@ const GalleryItem = ({ galleryItem }) => {
   const handleLike = () => {
     // Send a PUT request to increment likes for the item.
     axios
-      // .put localhost:5001/api/gallery/like/
       .put(`/api/gallery/like/${galleryItem.id}`)
       .then((response) => {
         // If the request is successful, increment the likes count in the state.
@@ -34,23 +33,20 @@ const GalleryItem = ({ galleryItem }) => {
   };
 
   // Render the gallery item.
+  
   return (
-    <div data-testid="galleryItem">
-      {/* Image of the gallery item */}
+    <div className="gallery-item" data-testid="galleryItem">
       <img
         src={galleryItem.url}
         alt={galleryItem.title}
-        style={{ width: "100px", height: "100px" }}
+        className="gallery-image"
         onClick={toggleExpand}
       />
-      {/* Conditionally render the description and like button when expanded */}
       {isExpanded && (
-        <div>
+        <div className="gallery-description">
           <p data-testid="description">{galleryItem.description}</p>
           <p>Likes: {likes}</p>
           <button onClick={handleLike}>Like</button>
-          {/* Link to a detailed view of the item (not implemented yet) */}
-          {/* <Link to={`/gallery/${galleryItem.id}`}>View Details</Link> */}
         </div>
       )}
     </div>

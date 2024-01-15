@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import GalleryItem from "../GalleryItem/GalleryItem";
 import axios from "axios";
+
+// Import CSS
 // import "./GalleryList.css";
-//
+
 // Define the GalleryList component
 const GalleryList = () => {
   // State to store gallery items
@@ -28,7 +30,7 @@ const GalleryList = () => {
 
   // Render the GalleryList component
   return (
-    <div data-testid="galleryList">
+    <div className="galleryList" data-testid="galleryList">
       {/* Map over galleryItems to render each GalleryItem */}
       {galleryItems.map((galleryItem) => (
         <GalleryItem key={galleryItem.id} galleryItem={galleryItem} />
