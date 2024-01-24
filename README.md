@@ -4,6 +4,8 @@
 
 TY's React Gallery is a visually appealing web application showcasing a collection of cute baby animals. It emphasizes a sleek user interface and seamless user experience, leveraging Material UI for design enhancement.
 
+![small cartoon snake](https://github.com/TyDomben/Weekend-React-Gallery/assets/127000572/0b530e11-39d7-4606-8e1f-b0bfcf235e82)
+
 ## Setup Instructions
 
 ### Getting Started
