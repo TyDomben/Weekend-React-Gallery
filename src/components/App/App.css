@@ -26,11 +26,12 @@ header {
   flex-grow: 1;
   padding: 20px;
   overflow-y: auto;
+  scroll-padding-block: 10px;
 }
 
 /* Description text styling */
 .galleryDescription {
-  text-align:calc(100% - 20px);
+  text-align: calc(100% - 20px);
   margin: 0 auto;
   padding: 20px;
   font-style: italic;
@@ -68,7 +69,6 @@ header {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 20px;
-
 }
 
 .gallery-image {
@@ -82,13 +82,20 @@ header {
 .gallery-description {
   display: flex;
   flex-direction: column;
-  max-width: 200px; /* Limit the width of the description */
-  font-size: 0.9em; /* Smaller font size */
-  line-height: 1.2; /* Control line height for better readability */
+  font-size: larger;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 10;
+  align-items: baseline;
+  justify-content: center;
+  flex-grow: calc(100% - 122px);
+  padding: 10px;
+  border-radius: 5px;
 }
 /* Ensure text doesn't overflow */
 .gallery-description p {
-  margin: 0;
+  margin: 1px;
+  padding: 1px;
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }

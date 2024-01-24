@@ -49,6 +49,7 @@ const GalleryItem = ({ galleryItem }) => {
           <button onClick={handleLike}>Like</button>
         </div>
       )}
+      
     </div>
   );
 };
